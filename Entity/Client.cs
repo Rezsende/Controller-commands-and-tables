@@ -7,7 +7,11 @@ namespace TableandCommandControl.Entity
 {
     public class Client
     {
-         public int id {get; set;}
-          public string name {get; set;}
+        public int id { get; set; }
+        public string name { get; set; }
+        public string lastName { get; set; }
+        public string CPF { get; set; }
+        public string RG { get; set; }
+
     }
 }
