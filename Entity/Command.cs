@@ -11,6 +11,6 @@ namespace TableandCommandControl.Entity
         public string description {get; set;}
         public Client? client {get; set;}
         public List<Product> products { get; set;}
-        public Table? table {get; set;}
+        public TableCommand? tableCommand {get; set;}
     }
 }

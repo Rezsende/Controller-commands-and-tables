@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TableandCommandControl.Context;
-using TableandCommandControl.DTO;
 using TableandCommandControl.Entity;
 
 namespace TableandCommandControl.Controller
@@ -27,7 +22,7 @@ namespace TableandCommandControl.Controller
                 .Include(c => c.client)
                 .Include(p => p.products).ThenInclude(a => a.ProductCommands)
                 .Include(p => p.products)
-                .Include(m => m.table)
+                .Include(m => m.tableCommand)
                 .ToList();
 
             var listProducts = commands.Select(p => new
@@ -44,7 +39,7 @@ namespace TableandCommandControl.Controller
                     SubTotal = product.ProductCommands.Qtd * product.ProductCommands.SaleValueCommand,
                 }).ToList(),
 
-                table = p.table ?? new Table(), 
+                table = p.tableCommand ?? new TableCommand(), 
                 totalGrade = p.products.Sum(product => product.ProductCommands.Qtd * product.ProductCommands.SaleValueCommand)
             }).ToList();
 
@@ -59,7 +54,7 @@ namespace TableandCommandControl.Controller
                 .Include(c => c.client)
                 .Include(p => p.products).ThenInclude(a => a.ProductCommands)
                 .Include(p => p.products)
-                .Include(m => m.table)
+                .Include(m => m.tableCommand)
                 .FirstOrDefault(c => c.id == idCommand);
 
             if (command == null)
@@ -69,7 +64,7 @@ namespace TableandCommandControl.Controller
 
 
             var client = command.client ?? new Client();
-            var table = command.table ?? new Table();
+            var table = command.tableCommand ?? new TableCommand();
 
             var listProducts = new
             {

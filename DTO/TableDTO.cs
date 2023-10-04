@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 
 namespace TableandCommandControl.DTO
 {
-    public class TableDTO
+    public class TableDto
     {
+         
     
-      
-        public int id {get; set;}
-        public string description {get; set;}
-        public DateTime? scheduling{get; set;}
+  
+        public string description { get; set; }
+
+        public int status { get; set; }
 
     }
 }
