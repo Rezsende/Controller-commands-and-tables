@@ -15,5 +15,6 @@ namespace TableandCommandControl.Context
        public DbSet<Product> Products {get; set;}  
        public DbSet<ProductCommands> ProductCommands {get; set;} 
        public  DbSet<TableCommand> TableCommands {get; set;}
+       public DbSet<Dependents> Dependents{get; set;}
     }
 }

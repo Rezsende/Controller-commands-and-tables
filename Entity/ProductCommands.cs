@@ -19,18 +19,5 @@ namespace TableandCommandControl.Entity
         public int Qtd { get; set; }
 
       
-
-
-        
-        // public string description
-        // {
-        //     get { return product != null ? product.description : null; }
-        // }
-
-        // public double valorVendaList
-        // {
-        //     get { return product != null ? product.SaleValue : 0; }
-        // }
-
     }
 }

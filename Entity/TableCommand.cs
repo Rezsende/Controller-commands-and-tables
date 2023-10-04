@@ -14,12 +14,5 @@ namespace TableandCommandControl.Entity
         public DateTime? scheduling { get; set; }
     }
 
-    public class TableCommandDto
-    {
-  
-        public string description { get; set; }
-
-        public int status { get; set; }
-
-    }
+    
 }
