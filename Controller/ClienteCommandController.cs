@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
@@ -47,24 +48,43 @@ namespace TableandCommandControl.Controller
             return Ok(clientData);
         }
 
-        [HttpPost]
-        public IActionResult CreateClient([FromBody]ClientDto clientDto){
+        [HttpGet("{id}")]
+        public IActionResult SeachClientId(int id)
+        {
+            var client = _context.Clients.Include(d => d.dependents).FirstOrDefault(c => c.id == id);
 
-            var cad = new Client{
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(client);
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public IActionResult CreateClient([FromBody] ClientDto clientDto)
+        {
+
+            var cad = new Client
+            {
                 name = clientDto.name,
                 lastName = clientDto.lastName,
                 CPF = clientDto.CPF,
                 RG = clientDto.RG
 
             };
-
-
             _context.Clients.Add(cad);
             _context.SaveChanges();
 
-            var res = new {
-               Menssage = "customer registered successfully!",
-               ClietCad =  cad,
+            var res = new
+            {
+                Menssage = "customer registered successfully!",
+                ClietCad = cad,
             };
 
             return Ok(res);
