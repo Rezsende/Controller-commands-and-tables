@@ -23,30 +23,42 @@ namespace TableandCommandControl.Controller
         {
             _context = context;
         }
+        
+
         [HttpGet]
         public IActionResult ListClient()
+{
+    var clients = _context.Clients
+        .Include(c => c.dependents)
+        .Include(c => c.Andress) 
+        .ToList();
+
+    var clientData = clients.Select(client => new
+    {
+        id = client.id,
+        name = client.name,
+        lastName = client.lastName,
+        cpf = client.CPF,
+        rg = client.RG,
+        dependents = client.dependents.Select(dependent => new
         {
-            var clients = _context.Clients
-                .Include(c => c.dependents)
-                .ToList();
+            id = dependent.id,
+            dependentType = ((DependentType)dependent.dependentType).ToString(),
+            clientId = dependent.clientId
+        }).ToList(),
+        Andress = client.Andress != null ? new AnddressDTO
+        {
+            city = client.Andress.city,
+            neighborhood = client.Andress.neighborhood,
+            road = client.Andress.road,
+            number = client.Andress.number,
+            complement = client.Andress.complement,
+            clientId = client.Andress.clientId
+        } : null
+    }).ToList();
 
-            var clientData = clients.Select(client => new
-            {
-                id = client.id,
-                name = client.name,
-                lastName = client.lastName,
-                cpf = client.CPF,
-                rg = client.RG,
-                dependents = client.dependents.Select(dependent => new
-                {
-                    id = dependent.id,
-                    dependentType = ((DependentType)dependent.dependentType).ToString(),
-                    clientId = dependent.clientId
-                }).ToList()
-            }).ToList();
-
-            return Ok(clientData);
-        }
+    return Ok(clientData);
+}
 
         [HttpGet("{id}")]
         public IActionResult SeachClientId(int id)
@@ -79,11 +91,6 @@ namespace TableandCommandControl.Controller
             return Ok(c);
 
         }
-
-
-
-
-
 
     }
 }
