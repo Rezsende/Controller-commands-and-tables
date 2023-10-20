@@ -16,5 +16,7 @@ namespace TableandCommandControl.Entity
 
         public List<Dependents> dependents {get; set;}
 
+        public Address Andress {get; set;}
+
     }
 }

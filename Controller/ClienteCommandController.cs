@@ -62,7 +62,23 @@ namespace TableandCommandControl.Controller
         }
 
 
+        [HttpPost]
+        public IActionResult CadCliente(ClientDto c)
+        {
+            var client = new Client
+            {
+                name = c.name,
+                lastName = c.lastName,
+                CPF = c.CPF,
+                RG = c.RG
+            };
 
+            _context.Add(client);
+            _context.SaveChanges();
+
+            return Ok(c);
+
+        }
 
 
 

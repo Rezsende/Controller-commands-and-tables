@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace TableandCommandControl.Entity
@@ -13,5 +14,8 @@ namespace TableandCommandControl.Entity
         public string road {get; set;}
         public string number {get; set;}
         public string complement {get; set;}
+        [JsonIgnore]
+        public Client client { get; set; }
+        public int clientId { get; set; }
     }
 }
