@@ -8,9 +8,7 @@ namespace TableandCommandControl.Entity
     public class Command
     {
         public int id {get; set;}
-        public string description {get; set;}
-        public Client? client {get; set;}
-        public List<Product> products { get; set;}
-        public TableCommand? tableCommand {get; set;}
+       public string description {get; set;}
+  
     }
 }

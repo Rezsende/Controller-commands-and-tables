@@ -66,29 +66,8 @@ namespace TableandCommandControl.Controller
 
 
 
-        [HttpPost]
-        public IActionResult CreateClient([FromBody] ClientDto clientDto)
-        {
 
-            var cad = new Client
-            {
-                name = clientDto.name,
-                lastName = clientDto.lastName,
-                CPF = clientDto.CPF,
-                RG = clientDto.RG
 
-            };
-            _context.Clients.Add(cad);
-            _context.SaveChanges();
-
-            var res = new
-            {
-                Menssage = "customer registered successfully!",
-                ClietCad = cad,
-            };
-
-            return Ok(res);
-        }
 
     }
 }
