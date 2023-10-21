@@ -44,6 +44,7 @@ namespace TableandCommandControl.Controller
         {
             id = dependent.id,
             dependentType = ((DependentType)dependent.dependentType).ToString(),
+            name = dependent.name,
             clientId = dependent.clientId
         }).ToList(),
         Andress = client.Andress != null ? new AnddressDTO

@@ -6,6 +6,8 @@ namespace TableandCommandControl.Entity
     {
         public int id { get; set; }
         public DependentType dependentType { get; set; }
+        public string name {get; set;}
+        public string lastName { get; set; }
 
         [JsonIgnore]
         public Client client { get; set; }
