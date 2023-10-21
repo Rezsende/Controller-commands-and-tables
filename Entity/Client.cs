@@ -18,5 +18,7 @@ namespace TableandCommandControl.Entity
 
         public Address Andress {get; set;}
 
+        public Contact Contact {get; set;}
+
     }
 }

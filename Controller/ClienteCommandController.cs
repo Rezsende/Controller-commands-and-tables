@@ -30,7 +30,8 @@ namespace TableandCommandControl.Controller
 {
     var clients = _context.Clients
         .Include(c => c.dependents)
-        .Include(c => c.Andress) 
+        .Include(c => c.Andress)
+        .Include(c=> c.Contact)
         .ToList();
 
     var clientData = clients.Select(client => new
@@ -55,7 +56,15 @@ namespace TableandCommandControl.Controller
             number = client.Andress.number,
             complement = client.Andress.complement,
             clientId = client.Andress.clientId
-        } : null
+        } : null,
+        Contact = client.Contact != null ? new ContactDTO
+        {
+            phone = client.Contact.phone,
+            Email = client.Contact.Email,
+            Instagram = client.Contact.Instagram,
+            FaceBook = client.Contact.FaceBook,
+            clientId = client.Contact.clientId,
+        } :null
     }).ToList();
 
     return Ok(clientData);

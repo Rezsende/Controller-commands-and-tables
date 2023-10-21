@@ -12,6 +12,8 @@ namespace TableandCommandControl.Entity
         [JsonIgnore]
         public Client client { get; set; }
         public int clientId { get; set; }
+       
+       
     }
 
     public enum DependentType
