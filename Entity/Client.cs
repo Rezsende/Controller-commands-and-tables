@@ -20,5 +20,8 @@ namespace TableandCommandControl.Entity
 
         public Contact Contact {get; set;}
 
+      
+       
+
     }
 }
