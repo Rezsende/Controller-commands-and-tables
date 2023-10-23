@@ -29,7 +29,7 @@ namespace TableandCommandControl.Controller
                         road = andress.road,
                         number = andress.number,
                         complement = andress.complement,
-                        clientId = andress.clientId
+                     
             };
 
             _context.Add(post);

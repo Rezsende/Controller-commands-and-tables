@@ -55,16 +55,29 @@ namespace TableandCommandControl.Controller
             road = client.Andress.road,
             number = client.Andress.number,
             complement = client.Andress.complement,
-            clientId = client.Andress.clientId
-        } : null,
+           
+        } : new AnddressDTO{
+             city = "",
+            neighborhood = "",
+            road = "",
+            number = "",
+            complement = "",
+           
+        },
         Contact = client.Contact != null ? new ContactDTO
         {
             phone = client.Contact.phone,
             Email = client.Contact.Email,
             Instagram = client.Contact.Instagram,
             FaceBook = client.Contact.FaceBook,
-            clientId = client.Contact.clientId,
-        } :null
+           
+        } : new ContactDTO{
+            phone = "",
+            Email = "",
+            Instagram = "",
+            FaceBook = "",
+          
+        }
     }).ToList();
 
     return Ok(clientData);

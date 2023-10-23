@@ -29,7 +29,7 @@ namespace TableandCommandControl.Controller
             Email = contact.Email,
             Instagram = contact.Instagram,
             FaceBook = contact.FaceBook,
-            clientId = contact.clientId
+            // clientId = contact.clientId
             };
 
             _context.Add(post);

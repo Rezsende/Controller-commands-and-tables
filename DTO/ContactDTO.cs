@@ -12,6 +12,6 @@ namespace TableandCommandControl.DTO
         public string? Email { get; set; }
         public string? Instagram { get; set; }
         public string? FaceBook { get; set; }
-         public int clientId { get; set; }
+        //  public int clientId { get; set; }
     }
 }

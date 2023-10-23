@@ -13,6 +13,6 @@ namespace TableandCommandControl.DTO
         public string road {get; set;}
         public string number {get; set;}
         public string complement {get; set;}
-       public int clientId { get; set; }
+   
     }
 }
